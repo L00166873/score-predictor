@@ -7,17 +7,13 @@ from sklearn.preprocessing import StandardScaler
 
 
 # Load dataset (Example: Insurance Charges Dataset. Remove first column index)
-df = pd.read_csv("insurance.csv").iloc[:, 1:]
-df["sex"] = df["sex"].map({"female": 0, "male": 1})
-df["region"] = df["region"].map({"southwest": 0, "southeast": 1, "northeast" : 2, "northwest":3})
-df["smoker"] = df["smoker"].map({"yes": 0, "no": 1})
-
+df = pd.read_csv("student_scores.csv")
 
 
 
 # Features (X) and Target (y)
-X = df[["age", "sex", "bmi", "children", "smoker", "region"]]
-y = df["charges"]
+X = df[["Hours"]]
+y = df["Scores"]
 
 # Split data into training and testing sets (80% train, 20% test)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
