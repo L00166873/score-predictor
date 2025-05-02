@@ -13,7 +13,7 @@ RUN python3 model.py
 
 RUN mkdir templates
 COPY index.html templates
-COPY result.html templates
+COPY results.html templates
 
 COPY flaskapp.py .
 EXPOSE 5000
