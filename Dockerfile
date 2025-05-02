@@ -11,4 +11,4 @@ COPY . .
 RUN python3 model.py
 
 EXPOSE 5000
-CMD ["Python3","flaskapp.py"]
+CMD ["python3","flaskapp.py"]
