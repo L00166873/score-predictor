@@ -7,14 +7,8 @@ WORKDIR /opt/currentworkdir
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 
-COPY model.py .
-COPY student_scores.csv .
+COPY . .
 RUN python3 model.py
 
-RUN mkdir templates
-COPY index.html templates
-COPY results.html templates
-
-COPY flaskapp.py .
 EXPOSE 5000
 CMD ["Python3","flaskapp.py"]
