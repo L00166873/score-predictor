@@ -15,25 +15,13 @@ def home():
 @app.route("/predict", methods=["POST"])
 def predict():
     # Get form data
-    age = float(request.form["age"])
-    sex = 1 if request.form["sex"] == "male" else 0
-    bmi = float(request.form["bmi"])
-    children = int(request.form["children"])
-    smoker = 1 if request.form["smoker"] == "no" else 0
-    region = int(request.form["region"])
+    hours = float(request.form["hours"])
 
-    # Prepare features for prediction
-    #features = np.array([[age, sex, bmi, children, smoker, region]])
-    feature_names = ["age", "sex", "bmi", "children", "smoker", "region"]
-    features = pd.DataFrame([[age, sex, bmi, children, smoker, region]], columns=feature_names)
-
-    # Predict charges
-    prediction = model.predict(features)
-    #  Format to float and 2 decimal places
-    formatted_prediction = f"The predicted value is ${round(float(prediction), 2)}"
+    # Predict scores
+    prediction = model.predict([[hours]])[0]
 
 
-    return render_template("result.html", prediction=formatted_prediction)
+    return render_template("results.html", hours=hours, prediction=round(prediction, 2))
 
 
 if __name__ == "__main__":
